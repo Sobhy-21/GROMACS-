@@ -1,0 +1,33 @@
+🔹 Step 1: Update your system
+sudo apt update 
+
+🔹 Step 2: Install dependencies for GROMACS
+sudo apt install build-essential cmake git libfftw3-dev libgsl-dev \
+libboost-all-dev libeigen3-dev libxml2-dev libexpat1-dev \
+libncurses5-dev libopenmpi-dev openmpi-bin -y
+
+🔹 Step 3: Download and compile GROMACS 
+cd ~
+wget ftp://ftp.gromacs.org/pub/gromacs/gromacs-2023.3.tar.gz
+tar -xvzf gromacs-2023.3.tar.gz
+cd gromacs-2023.3
+mkdir build && cd build
+cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs
+make -j$(nproc)
+sudo make install
+
+🔹 Step 4: Source GROMACS in every session
+echo 'source /usr/local/gromacs/bin/GMXRC' >> ~/.bashrc
+source ~/.bashrc
+
+🔹 Step 5: Create a virtual environment
+python -m venv gromacs_env
+
+🔹 Step 6: Activate the environment
+source gromacs_env/bin/activate
+
+
+
+To test GROMACS:
+gmx --version
+
