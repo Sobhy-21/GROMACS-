@@ -26,6 +26,9 @@ python -m venv gromacs_env
 🔹 Step 6: Activate the environment
 source gromacs_env/bin/activate
 
+THEN IT WILL BE AUTOMATICALLY ACTIVE WHENEVER YOU START THE TERMINAL
+
+
 
 
 To test GROMACS:
