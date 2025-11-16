@@ -86,11 +86,19 @@ Performs post-processing and generates a comprehensive PDF report (`pre_analysis
 - Evaluates stability and adds conditional comments
 - Exports all plots and analysis to a single PDF
 
-### 3. `replica_analysis.py`
-Specifically focuses on replica trajectories:
+### 3. replica_analysis.py
 
-- Calculates backbone RMSD, C-alpha RMSF, and radius of gyration (Rg)
-- Produces plots and PDF summary for further inspection of structural dynamics
+Performs detailed analysis of the replica simulations for each protein:
+
+- Reads the trajectory files from Replica 1 and Replica 2
+- Calculates structural metrics including:
+  - Backbone RMSD
+  - C-alpha RMSF
+  - Radius of gyration (Rg)
+- Generates high-resolution plots for each metric
+- Evaluates stability and highlights fluctuations with conditional comments
+- Exports all plots and analysis into a single PDF report (`replica_analysis.pdf`) in the protein's output directory
+
 
 ---
 
