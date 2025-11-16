@@ -1,0 +1,12 @@
+integrator  = steep         ; steepest descent
+emtol       = 100           ; stop when max force < 100 kJ/mol/nm
+emstep      = 0.01          ; step size
+nsteps      = 50000         ; maximum number of steps
+
+nstlist     = 1
+cutoff-scheme = Verlet
+ns_type     = grid
+coulombtype = PME
+rcoulomb    = 1.0
+rvdw        = 1.0
+pbc         = xyz
