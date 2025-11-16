@@ -23,7 +23,7 @@ gromacs_tutorials/
 │ │ ├── nvt.gro
 │ │ ├── npt.gro
 │ │ ├── replica1/
-│ │ ├── replica2/
+│ │ ├── replica2/ ├── replica_analysis.pdf
 │ │ ├── pre_analysis.pdf
 │ │ └── plots/
 │ └── protein2/
@@ -86,7 +86,7 @@ Performs post-processing and generates a comprehensive PDF report (`pre_analysis
 - Evaluates stability and adds conditional comments
 - Exports all plots and analysis to a single PDF
 
-### 3. replica_analysis.py
+### 3. `replica_analysis.py`
 
 Performs detailed analysis of the replica simulations for each protein:
 
