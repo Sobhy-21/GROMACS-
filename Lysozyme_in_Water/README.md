@@ -9,6 +9,7 @@ The pipeline is designed to simplify MD simulation tasks, enable reproducibility
 
 ## Directory Structure
 
+```bash
 gromacs_tutorials/
 │
 ├── proteins/ # Input protein PDB files
@@ -32,7 +33,7 @@ gromacs_tutorials/
 ├── pre_analysis.py # Automated plotting and PDF report generator
 └── replica_analysis.py # Replica RMSD/RMSF/Rg analysis
 
-
+```
 
 
 
@@ -40,7 +41,6 @@ gromacs_tutorials/
 
 ## Requirements
 
-### Software
 - [GROMACS](http://www.gromacs.org/) (tested with 2024.2)
 - Python 3.12 or higher
 - Python libraries:
@@ -53,62 +53,18 @@ gromacs_tutorials/
 
 ## Usage
 
-1. **Load modules on Puhti:**
-
 ```bash
 module load gromacs
 module load python-data/3.12-25.09
+python3 multi_protein_pipeline.py proteins
+```
 
 
 
 
 
 
-Scripts
-1. multi_protein_pipeline.py
 
-Automates the full simulation workflow:
 
-Converts PDB files to GROMACS topology (pdb2gmx)
 
-Defines simulation box and solvates the protein
 
-Adds ions and performs energy minimization (EM)
-
-Runs NVT and NPT equilibration
-
-Launches short replica simulations for further sampling
-
-Calls pre_analysis.py for automated analysis
-
-2. pre_analysis.py
-
-Performs post-processing and generates a comprehensive PDF report (pre_analysis.pdf) for each protein:
-
-Reads .xvg output files from EM, NVT, NPT, Replica 1, and Replica 2
-
-Generates high-resolution plots for:
-
-Temperature
-
-Pressure
-
-Density
-
-Potential energy
-
-RMSD, RMSF, and radius of gyration (replicas)
-
-Computes averages, fluctuations, and drift
-
-Evaluates stability and adds conditional comments
-
-Exports all plots and analysis to a single PDF
-
-3. replica_analysis.py
-
-Specifically focuses on replica trajectories:
-
-Calculates backbone RMSD, C-alpha RMSF, and radius of gyration (Rg)
-
-Produces plots and PDF summary for further inspection of structural dynamics
