@@ -60,6 +60,57 @@ python3 multi_protein_pipeline.py proteins
 ```
 
 
+## Scripts
+
+### 1. `multi_protein_pipeline.py`
+Automates the full simulation workflow:
+
+- Converts PDB files to GROMACS topology (`pdb2gmx`)
+- Defines simulation box and solvates the protein
+- Adds ions and performs energy minimization (EM)
+- Runs NVT and NPT equilibration
+- Launches short replica simulations for further sampling
+- Calls `pre_analysis.py` for automated analysis
+
+### 2. `pre_analysis.py`
+Performs post-processing and generates a comprehensive PDF report (`pre_analysis.pdf`) for each protein:
+
+- Reads `.xvg` output files from EM, NVT, NPT, Replica 1, and Replica 2
+- Generates high-resolution plots for:
+  - Temperature
+  - Pressure
+  - Density
+  - Potential energy
+  - RMSD, RMSF, and radius of gyration (replicas)
+- Computes averages, fluctuations, and drift
+- Evaluates stability and adds conditional comments
+- Exports all plots and analysis to a single PDF
+
+### 3. `replica_analysis.py`
+Specifically focuses on replica trajectories:
+
+- Calculates backbone RMSD, C-alpha RMSF, and radius of gyration (Rg)
+- Produces plots and PDF summary for further inspection of structural dynamics
+
+---
+
+## Output
+
+Typical results for a single protein:
+
+| Stage      | Property | Expected Result                              |
+|------------|----------|----------------------------------------------|
+| EM         | Potential | Stable minimization (low energy)            |
+| NVT        | Temperature | ~300 K ± 2 K                              |
+| NPT        | Pressure | Stable around 1 bar (±200 bar)               |
+| NPT        | Density | Consistent density of water                  |
+| Replica 1  | RMSD    | Stable backbone RMSD (~0.1–0.3 nm)           |
+| Replica 2  | RMSD    | Stable backbone RMSD (~0.1–0.3 nm)           |
+| Replica 1  | RMSF    | Normal flexibility peaks at loops            |
+| Replica 2  | RMSF    | Normal flexibility peaks at loops            |
+| Replica 1  | Rg      | Stable protein compactness (~1–2 nm)         |
+| Replica 2  | Rg      | Stable protein compactness (~1–2 nm)         |
+
 
 
 
