@@ -70,7 +70,7 @@ Automates the full simulation workflow:
 - Adds ions and performs energy minimization (EM)
 - Runs NVT and NPT equilibration
 - Launches short replica simulations for further sampling
-- Calls `pre_analysis.py` for automated analysis
+- Calls `pre_analysis.py` and `replica_analysis.py` for automated analysis
 
 ### 2. `pre_analysis.py`
 Performs post-processing and generates a comprehensive PDF report (`pre_analysis.pdf`) for each protein:
@@ -113,6 +113,27 @@ Typical results for a single protein:
 
 
 
+## Customization
+
+Users can modify:
+
+- MDP parameters for EM, NVT, NPT, and replica runs
+- Thermostat and barostat settings
+- Number of steps, timestep, constraints, or target temperature
+- Paths for input/output directories
+
+## Visualization
+
+- Simulation snapshots and structural analyses can be visualized using **PyMOL**, allowing inspection of:
+  - Protein conformation
+  - Secondary structure
+  - Dynamics over time
+
+## Notes
+
+- Each protein is processed independently, enabling parallel execution on HPC clusters.
+- All scripts are designed to work on the **Puhti CSC** environment, but can be adapted for other systems with minor adjustments.
+- Reports include conditional comments highlighting stability issues and suggestions for further improvement.
 
 
 
